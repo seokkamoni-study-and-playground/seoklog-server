@@ -30,8 +30,8 @@ public class PostService {
     }
 
     @Transactional
-    public PostResponseDto updatePost(UpdateRequestDto updateRequestDto) {
-        Post post = postRepository.findById(updateRequestDto.getId())
+    public PostResponseDto updatePost(UpdateRequestDto updateRequestDto, Long id) {
+        Post post = postRepository.findById(id)
                 .orElseThrow(IllegalAccessError::new);
         post.UpdatePost(updateRequestDto);
 
