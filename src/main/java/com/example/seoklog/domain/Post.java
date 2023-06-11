@@ -36,6 +36,6 @@ public class Post {
 
     public void UpdatePost(UpdateRequestDto updateRequestDto) {
         this.title = updateRequestDto.getTitle();
-        this.content = updateRequestDto.getTitle();
+        this.content = updateRequestDto.getContent();
     }
 }
