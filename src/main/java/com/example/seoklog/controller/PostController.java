@@ -6,6 +6,7 @@ import com.example.seoklog.controller.dto.PostResponseDto;
 import com.example.seoklog.domain.Post;
 import com.example.seoklog.service.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,5 +38,10 @@ public class PostController {
     @GetMapping("/post/{id}")
     public PostResponseDto getPostDetail(@PathVariable Long id) {
         return postService.getPostDetail(id);
+    }
+
+    @DeleteMapping("/post/{id}")
+    public void deletePost(@PathVariable Long id) {
+        postService.deletePost(id);
     }
 }

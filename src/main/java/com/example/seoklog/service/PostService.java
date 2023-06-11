@@ -52,4 +52,8 @@ public class PostService {
                 .orElseThrow(IllegalAccessError::new);
         return new PostResponseDto(post);
     }
+
+    public void deletePost(Long id) {
+         postRepository.deleteById(id);
+    }
 }
