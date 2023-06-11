@@ -6,13 +6,13 @@ import lombok.Getter;
 import java.util.Date;
 
 @Getter
-public class UpdateResponseDto {
+public class PostResponseDto {
     private Long id;
     private String title;
     private String content;
     private Date date;
 
-    public UpdateResponseDto(Post post) {
+    public PostResponseDto(Post post) {
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();

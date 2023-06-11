@@ -2,13 +2,14 @@ package com.example.seoklog.service;
 
 import com.example.seoklog.controller.dto.CreateRequestDto;
 import com.example.seoklog.controller.dto.UpdateRequestDto;
-import com.example.seoklog.controller.dto.UpdateResponseDto;
+import com.example.seoklog.controller.dto.PostResponseDto;
 import com.example.seoklog.domain.Post;
 import com.example.seoklog.repository.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,15 +30,26 @@ public class PostService {
     }
 
     @Transactional
-    public UpdateResponseDto updatePost(UpdateRequestDto updateRequestDto) {
+    public PostResponseDto updatePost(UpdateRequestDto updateRequestDto) {
         Post post = postRepository.findById(updateRequestDto.getId())
                 .orElseThrow(IllegalAccessError::new);
         post.UpdatePost(updateRequestDto);
 
-        return new UpdateResponseDto(post);
+        return new PostResponseDto(post);
     }
 
-    public List<Post> getPost() {
-        return postRepository.findAll();
+    public List<PostResponseDto> getPost() {
+        List<PostResponseDto> result = new ArrayList<>();
+        List<Post> post = postRepository.findAll();
+        for(Post p : post){
+            result.add(new PostResponseDto(p));
+        }
+        return result;
+    }
+
+    public PostResponseDto getPostDetail(Long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(IllegalAccessError::new);
+        return new PostResponseDto(post);
     }
 }
