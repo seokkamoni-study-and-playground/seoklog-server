@@ -2,6 +2,7 @@ package com.example.seoklog.service;
 
 import com.example.seoklog.controller.dto.CreateRequestDto;
 import com.example.seoklog.controller.dto.UpdateRequestDto;
+import com.example.seoklog.controller.dto.UpdateResponseDto;
 import com.example.seoklog.domain.Post;
 import com.example.seoklog.repository.PostRepository;
 import lombok.AllArgsConstructor;
@@ -27,11 +28,11 @@ public class PostService {
     }
 
     @Transactional
-    public Long updatePost(UpdateRequestDto updateRequestDto) {
+    public UpdateResponseDto updatePost(UpdateRequestDto updateRequestDto) {
         Post post = postRepository.findById(updateRequestDto.getId())
                 .orElseThrow(IllegalAccessError::new);
         post.UpdatePost(updateRequestDto);
-        
-        return updateRequestDto.getId();
+
+        return new UpdateResponseDto(post);
     }
 }

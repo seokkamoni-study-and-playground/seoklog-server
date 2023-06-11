@@ -2,6 +2,7 @@ package com.example.seoklog.controller;
 
 import com.example.seoklog.controller.dto.CreateRequestDto;
 import com.example.seoklog.controller.dto.UpdateRequestDto;
+import com.example.seoklog.controller.dto.UpdateResponseDto;
 import com.example.seoklog.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,7 @@ public class PostController {
     }
 
     @PutMapping("/post")
-    public Long updatePost(@RequestBody UpdateRequestDto updateRequestDto) {
+    public UpdateResponseDto updatePost(@RequestBody UpdateRequestDto updateRequestDto) {
         return postService.updatePost(updateRequestDto);
     }
-
 }
