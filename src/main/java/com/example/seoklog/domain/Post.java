@@ -1,6 +1,7 @@
 package com.example.seoklog.domain;
 
 
+import com.example.seoklog.controller.dto.UpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,10 @@ public class Post {
         this.title = title;
         this.content = content;
         this.date = date;
+    }
+
+    public void UpdatePost(UpdateRequestDto updateRequestDto) {
+        this.title = updateRequestDto.getTitle();
+        this.content = updateRequestDto.getTitle();
     }
 }
